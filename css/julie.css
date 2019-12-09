@@ -1,0 +1,1230 @@
+/*=============================================
+=            Slick Slider            =
+=============================================*/
+/* Arrows */
+.slick-prev,
+.slick-next {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  height: 46px;
+  width: 46px;
+  line-height: 0;
+  font-size: 0;
+  cursor: pointer;
+  background: transparent;
+  color: transparent;
+  top: 50%;
+  transform: translate(0, -50%);
+  padding: 0;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  border: 2px solid theme-color("secondary");
+  transition: all 0.3s ease;
+}
+.slick-prev:hover, .slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+  outline: none;
+  background-color: theme-color("secondary");
+  color: transparent;
+}
+.slick-prev:hover:before, .slick-prev:focus:before,
+.slick-next:hover:before,
+.slick-next:focus:before {
+  opacity: 1;
+}
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before {
+  opacity: 0.25;
+}
+.slick-prev:before,
+.slick-next:before {
+  font-family: "Ionicons";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 1;
+  color: theme-color("light");
+  opacity: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev {
+  left: -25px;
+}
+[dir=rtl] .slick-prev {
+  left: auto;
+  right: -25px;
+}
+.slick-prev:before {
+  content: "";
+}
+[dir=rtl] .slick-prev:before {
+  content: "";
+}
+
+.slick-next {
+  right: -25px;
+}
+[dir=rtl] .slick-next {
+  left: -25px;
+  right: auto;
+}
+.slick-next:before {
+  content: "";
+}
+[dir=rtl] .slick-next:before {
+  content: "";
+}
+
+.slick--arrows-top .slick-prev {
+  right: 56px;
+  left: auto;
+  top: 0;
+  margin-top: -40px;
+}
+.slick--arrows-top .slick-prev:before {
+  content: "";
+}
+.slick--arrows-top .slick-next {
+  right: 0;
+  top: 0;
+  margin-top: -40px;
+}
+.slick--arrows-top .slick-next:before {
+  content: "";
+}
+
+/* Arrows - Alternative */
+.slick-arrow-divider {
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  margin-left: -1px;
+  bottom: 0;
+  transform: rotate(30deg);
+  width: 2px;
+  height: 100px;
+  background-color: theme-color("secondary");
+}
+.section-content--tertiary .slick-arrow-divider {
+  background-color: #ECECEC;
+}
+
+.slick-prev-arrow,
+.slick-next-arrow {
+  bottom: 37px;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  cursor: pointer;
+  background: transparent;
+  color: transparent;
+  padding: 0;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 50px;
+  height: 30px;
+}
+.slick-prev-arrow::before, .slick-prev-arrow::after,
+.slick-next-arrow::before,
+.slick-next-arrow::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 6px;
+  height: 2px;
+  right: 0;
+  top: 15px;
+  background-color: #FFFFF;
+  transition: 0.2s ease all;
+}
+.section-content--tertiary .slick-prev-arrow::before, .section-content--tertiary .slick-prev-arrow::after,
+.section-content--tertiary .slick-next-arrow::before,
+.section-content--tertiary .slick-next-arrow::after {
+  background-color: theme-color("secondary");
+}
+.slick-prev-arrow span,
+.slick-next-arrow span {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 15px;
+  width: 48px;
+  height: 2px;
+  background-color: #FFFFF;
+  transition: 0.2s ease all;
+}
+.section-content--tertiary .slick-prev-arrow span,
+.section-content--tertiary .slick-next-arrow span {
+  background-color: theme-color("secondary");
+}
+.slick-prev-arrow:hover::before, .slick-prev-arrow:hover::after,
+.slick-next-arrow:hover::before,
+.slick-next-arrow:hover::after {
+  background-color: theme-color("primary");
+}
+.slick-prev-arrow:hover span,
+.slick-next-arrow:hover span {
+  background-color: theme-color("primary");
+}
+
+.slick-prev-arrow {
+  left: 50%;
+  margin-left: -85px;
+}
+.slick-prev-arrow::before, .slick-prev-arrow::after {
+  right: auto;
+  left: 0;
+}
+.slick-prev-arrow::before {
+  transform: translateY(-2px) rotate(-45deg);
+}
+.slick-prev-arrow::after {
+  transform: translateY(2px) rotate(45deg);
+}
+
+.slick-next-arrow {
+  right: 50%;
+  margin-right: -85px;
+}
+.slick-next-arrow::before {
+  transform: translateY(-2px) translateX(1px) rotate(45deg);
+}
+.slick-next-arrow::after {
+  transform: translateY(2px) translateX(1px) rotate(-45deg);
+}
+
+/* Dots */
+.slick-dots {
+  position: absolute;
+  z-index: 2;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.slick-dots > li {
+  padding: 0;
+  margin: 0;
+  height: 25px;
+  width: 20px;
+  position: relative;
+  cursor: pointer;
+}
+.slick-dots > li > button {
+  overflow: hidden;
+  height: 20px;
+  width: 50%;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  font-size: 0;
+  position: relative;
+  z-index: 2;
+  outline: none;
+}
+.slick-dots > li > button:hover {
+  cursor: pointer;
+}
+.slick-dots > li::before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -1px;
+  background-color: rgba(255, 255, 255, 0.33);
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: all 300ms cubic-bezier(0.86, 0, 0.07, 1);
+}
+.slick-dots > li:hover::before {
+  background-color: theme-color("light");
+  width: 100%;
+}
+.slick-dots > li.slick-active::before {
+  background-color: theme-color("light");
+  width: 100%;
+}
+
+/*=====  End of Slick Slider  ======*/
+
+/*=============================================
+=            Main Slider            =
+=============================================*/
+/*----------  Room Slider  ----------*/
+.main-slider-wrapper {
+  position: relative;
+}
+
+.main-slider {
+  overflow: hidden;
+  position: relative;
+}
+
+.main-slider__item {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 240px;
+  width: 100%;
+}
+@media only screen and (min-width: 576px) {
+  .main-slider__item {
+    height: 466px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .main-slider__item {
+    height: 620px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .main-slider__item {
+    height: 830px;
+  }
+}
+.main-slider__item::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.main-slider__item::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background-image: linear-gradient(to bottom, transparent);
+}
+
+.main-slider__layer {
+  position: absolute;
+  z-index: 1;
+}
+
+.main-slider__item--img-1 {
+  background-image: url("../../assets/img/samples/Gamescape-3.jpg");
+}
+
+.main-slider__item--img-2 {
+  background-image: url("../../assets/img/samples/Gamescape-2.jpg");
+}
+
+.main-slider__item--img-3 {
+  background-image: url("../../assets/img/samples/Gamescape-4.jpg");
+}
+
+.main-slider__item--img-4 {
+  background-image: url("../../assets/img/samples/Gamescape-1.jpg");
+}
+
+/* Slide Content */
+.main-slider__item-content {
+  top: 40%;
+  left: 20px;
+  right: 20px;
+  transform: translateY(-50%);
+}
+@media only screen and (min-width: 0px) {
+  .main-slider__item-content {
+    text-align: center;
+    transform: none;
+  }
+}
+@media only screen and (min-width: 576px) {
+  .main-slider__item-content {
+    left: 50px;
+    right: auto;
+    text-align: left;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .main-slider__item-content {
+    left: 100px;
+    right: auto;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .main-slider__item-content {
+    left: 150px;
+    right: auto;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .main-slider__item-content .btn-link--dash {
+    padding: 0.5rem;
+    font-size: 0.5rem;
+    border: none;
+  }
+  .main-slider__item-content .btn-link--dash::before {
+    display: none;
+  }
+}
+
+/* Title */
+.main-slider__item-title {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.42);
+  font-size: 1.75rem;
+  letter-spacing: -0.03em;
+  line-height: 1em;
+  margin-bottom: 0.5em;
+  font-size: 23px;
+}
+.main-slider__item-title > span {
+  display: inline-block;
+}
+@media only screen and (min-width: 576px) {
+  .main-slider__item-title > span {
+    display: block;
+  }
+}
+@media only screen and (min-width: 0px) {
+  .main-slider__item-title {
+    margin-bottom: 0.2em;
+    letter-spacing: 0;
+  }
+}
+@media only screen and (min-width: 576px) {
+  .main-slider__item-title {
+    font-size: 54px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .main-slider__item-title {
+    font-size: 72px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .main-slider__item-title {
+    font-size: 100px;
+  }
+}
+
+/*=====  End of Main Slider  ======*/
+
+
+/*=====  Bouton  ======*/
+
+/* line 5, ../scss/components/_buttons.scss */
+.btn,
+.button {
+  display: inline-block;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  padding: 0.8rem 2rem;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  transition: all 0.15s ease-in-out;
+}
+@media screen and (prefers-reduced-motion: reduce) {
+  /* line 5, ../scss/components/_buttons.scss */
+  .btn,
+  .button {
+    transition: none;
+  }
+}
+/* line 17, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn:hover, .btn:focus,
+.button:hover,
+.button:focus {
+  text-decoration: none;
+}
+/* line 22, ../scss/components/_buttons.scss */
+.btn:focus, .btn.focus,
+.button:focus,
+.button.focus {
+  outline: 0;
+  box-shadow: none;
+}
+/* line 29, ../scss/components/_buttons.scss */
+.btn.disabled, .btn:disabled,
+.button.disabled,
+.button:disabled {
+  opacity: .65;
+}
+/* line 35, ../scss/components/_buttons.scss */
+.btn:active, .btn.active,
+.button:active,
+.button.active {
+  background-image: none;
+}
+
+/* line 43, ../scss/components/_buttons.scss */
+a.btn.disabled,
+fieldset[disabled] a.btn {
+  pointer-events: none;
+}
+
+/* line 54, ../scss/components/_buttons.scss */
+.btn-primary {
+  color: #fff;
+  background-color: #F60B0E;
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-primary:hover {
+  color: #fff;
+  background-color: #d3080a;
+  border-color: #c7070a;
+}
+/* line 18, ../scss/mixins/_buttons.scss */
+.btn-primary:focus, .btn-primary.focus {
+  box-shadow: 0 0 0 3px rgba(246, 11, 14, 0.5);
+}
+/* line 29, ../scss/mixins/_buttons.scss */
+.btn-primary.disabled, .btn-primary:disabled {
+  background-color: #F60B0E;
+}
+
+/* line 35, ../scss/mixins/_buttons.scss */
+.btn-primary:not([disabled]):not(.disabled):active, .btn-primary:not([disabled]):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #c7070a;
+  box-shadow: 0 0 0 0 rgba(246, 11, 14, 0.5);
+}
+
+/* line 54, ../scss/components/_buttons.scss */
+.btn-secondary {
+  color: #fff;
+  background-color: #404040;
+
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-secondary:hover {
+  color: #fff;
+  background-color: #2d2d2d;
+
+}
+/* line 18, ../scss/mixins/_buttons.scss */
+.btn-secondary:focus, .btn-secondary.focus {
+  box-shadow: 0 0 0 3px rgba(64, 64, 64, 0.5);
+}
+/* line 29, ../scss/mixins/_buttons.scss */
+.btn-secondary.disabled, .btn-secondary:disabled {
+  background-color: #404040;
+
+}
+/* line 35, ../scss/mixins/_buttons.scss */
+.btn-secondary:not([disabled]):not(.disabled):active, .btn-secondary:not([disabled]):not(.disabled).active, .show > .btn-secondary.dropdown-toggle {
+  color: #fff;
+  background-color: #272727;
+
+  box-shadow: 0 0 0 0 rgba(64, 64, 64, 0.5);
+}
+
+/* line 54, ../scss/components/_buttons.scss */
+.btn-success {
+  color: #fff;
+  background-color: #00C851;
+
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-success:hover {
+  color: #fff;
+  background-color: #00a242;
+}
+/* line 18, ../scss/mixins/_buttons.scss */
+.btn-success:focus, .btn-success.focus {
+  box-shadow: 0 0 0 3px rgba(0, 200, 81, 0.5);
+}
+/* line 29, ../scss/mixins/_buttons.scss */
+.btn-success.disabled, .btn-success:disabled {
+  background-color: #00C851;
+}
+/* line 35, ../scss/mixins/_buttons.scss */
+.btn-success:not([disabled]):not(.disabled):active, .btn-success:not([disabled]):not(.disabled).active, .show > .btn-success.dropdown-toggle {
+  color: #fff;
+  background-color: #00953c;
+  box-shadow: 0 0 0 0 rgba(0, 200, 81, 0.5);
+}
+
+/* line 54, ../scss/components/_buttons.scss */
+.btn-info {
+  color: #fff;
+  background-color: #33b5e5;
+
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-info:hover {
+  color: #fff;
+  background-color: #1ba4d6;
+  border-color: #1a9bcb;
+}
+/* line 18, ../scss/mixins/_buttons.scss */
+.btn-info:focus, .btn-info.focus {
+  box-shadow: 0 0 0 3px rgba(51, 181, 229, 0.5);
+}
+/* line 29, ../scss/mixins/_buttons.scss */
+.btn-info.disabled, .btn-info:disabled {
+  background-color: #33b5e5;
+  border-color: #33b5e5;
+}
+/* line 35, ../scss/mixins/_buttons.scss */
+.btn-info:not([disabled]):not(.disabled):active, .btn-info:not([disabled]):not(.disabled).active, .show > .btn-info.dropdown-toggle {
+  color: #fff;
+  background-color: #1a9bcb;
+  border-color: #1893c0;
+  box-shadow: 0 0 0 0 rgba(51, 181, 229, 0.5);
+}
+
+/* line 54, ../scss/components/_buttons.scss */
+.btn-warning {
+  color: #212529;
+  background-color: #ffbb33;
+  border-color: #ffbb33;
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-warning:hover {
+  color: #212529;
+  background-color: #ffae0d;
+  border-color: #ffaa00;
+}
+/* line 18, ../scss/mixins/_buttons.scss */
+.btn-warning:focus, .btn-warning.focus {
+  box-shadow: 0 0 0 3px rgba(255, 187, 51, 0.5);
+}
+/* line 29, ../scss/mixins/_buttons.scss */
+.btn-warning.disabled, .btn-warning:disabled {
+  background-color: #ffbb33;
+  border-color: #ffbb33;
+}
+/* line 35, ../scss/mixins/_buttons.scss */
+.btn-warning:not([disabled]):not(.disabled):active, .btn-warning:not([disabled]):not(.disabled).active, .show > .btn-warning.dropdown-toggle {
+  color: #212529;
+  background-color: #ffaa00;
+  border-color: #f2a100;
+  box-shadow: 0 0 0 0 rgba(255, 187, 51, 0.5);
+}
+
+/* line 54, ../scss/components/_buttons.scss */
+.btn-danger {
+  color: #fff;
+  background-color: #F60B0E;
+  border-color: #F60B0E;
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-danger:hover {
+  color: #fff;
+  background-color: #d3080a;
+  border-color: #c7070a;
+}
+/* line 18, ../scss/mixins/_buttons.scss */
+.btn-danger:focus, .btn-danger.focus {
+  box-shadow: 0 0 0 3px rgba(246, 11, 14, 0.5);
+}
+/* line 29, ../scss/mixins/_buttons.scss */
+.btn-danger.disabled, .btn-danger:disabled {
+  background-color: #F60B0E;
+  border-color: #F60B0E;
+}
+/* line 35, ../scss/mixins/_buttons.scss */
+.btn-danger:not([disabled]):not(.disabled):active, .btn-danger:not([disabled]):not(.disabled).active, .show > .btn-danger.dropdown-toggle {
+  color: #fff;
+  background-color: #c7070a;
+  border-color: #ba0709;
+  box-shadow: 0 0 0 0 rgba(246, 11, 14, 0.5);
+}
+
+/* line 54, ../scss/components/_buttons.scss */
+.btn-light {
+  color: #212529;
+  background-color: #fff;
+  border-color: #fff;
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-light:hover {
+  color: #212529;
+  background-color: #ececec;
+  border-color: #e6e6e6;
+}
+/* line 18, ../scss/mixins/_buttons.scss */
+.btn-light:focus, .btn-light.focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+/* line 29, ../scss/mixins/_buttons.scss */
+.btn-light.disabled, .btn-light:disabled {
+  background-color: #fff;
+  border-color: #fff;
+}
+/* line 35, ../scss/mixins/_buttons.scss */
+.btn-light:not([disabled]):not(.disabled):active, .btn-light:not([disabled]):not(.disabled).active, .show > .btn-light.dropdown-toggle {
+  color: #212529;
+  background-color: #e6e6e6;
+  border-color: #dfdfdf;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
+}
+
+/* line 54, ../scss/components/_buttons.scss */
+.btn-dark {
+  color: #fff;
+  background-color: #1B1B1B;
+  border-color: #1B1B1B;
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-dark:hover {
+  color: #fff;
+  background-color: #080808;
+  border-color: #010101;
+}
+/* line 18, ../scss/mixins/_buttons.scss */
+.btn-dark:focus, .btn-dark.focus {
+  box-shadow: 0 0 0 3px rgba(27, 27, 27, 0.5);
+}
+/* line 29, ../scss/mixins/_buttons.scss */
+.btn-dark.disabled, .btn-dark:disabled {
+  background-color: #1B1B1B;
+  border-color: #1B1B1B;
+}
+/* line 35, ../scss/mixins/_buttons.scss */
+.btn-dark:not([disabled]):not(.disabled):active, .btn-dark:not([disabled]):not(.disabled).active, .show > .btn-dark.dropdown-toggle {
+  color: #fff;
+  background-color: #010101;
+
+  box-shadow: 0 0 0 0 rgba(27, 27, 27, 0.5);
+}
+
+/* line 60, ../scss/components/_buttons.scss */
+.btn-outline-primary {
+  color: #fff;
+  background-color: transparent;
+  background-image: none;
+
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: #F60B0E;
+
+}
+/* line 66, ../scss/mixins/_buttons.scss */
+.btn-outline-primary:focus, .btn-outline-primary.focus {
+  box-shadow: 0 0 0 3px rgba(246, 11, 14, 0.5);
+}
+/* line 71, ../scss/mixins/_buttons.scss */
+.btn-outline-primary.disabled, .btn-outline-primary:disabled {
+  color: #F60B0E;
+  background-color: transparent;
+}
+/* line 77, ../scss/mixins/_buttons.scss */
+.btn-outline-primary:not([disabled]):not(.disabled):active, .btn-outline-primary:not([disabled]):not(.disabled).active, .show > .btn-outline-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #F60B0E;
+  box-shadow: 0 0 0 0 rgba(246, 11, 14, 0.5);
+}
+
+/* line 60, ../scss/components/_buttons.scss */
+.btn-outline-secondary {
+  color: #fff;
+  background-color: #e03a0a;
+  background-image: none;
+}
+
+
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-outline-secondary:hover {
+  color: #fff;
+  background-color: #59382E;
+}
+/* line 66, ../scss/mixins/_buttons.scss */
+.btn-outline-secondary:focus, .btn-outline-secondary.focus {
+  box-shadow: 0 0 0 3px rgba(64, 64, 64, 0.5);
+}
+/* line 71, ../scss/mixins/_buttons.scss */
+.btn-outline-secondary.disabled, .btn-outline-secondary:disabled {
+  color: #404040;
+  background-color: transparent;
+}
+/* line 77, ../scss/mixins/_buttons.scss */
+.btn-outline-secondary:not([disabled]):not(.disabled):active, .btn-outline-secondary:not([disabled]):not(.disabled).active, .show > .btn-outline-secondary.dropdown-toggle {
+  color: #fff;
+  background-color: #404040;
+  border-color: #404040;
+  box-shadow: 0 0 0 0 rgba(64, 64, 64, 0.5);
+}
+
+/* line 60, ../scss/components/_buttons.scss */
+.btn-outline-success {
+  color: #fff;
+  background-color: transparent;
+  background-image: none;
+  border-color: #00C851;
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-outline-success:hover {
+  color: #fff;
+  background-color: #00C851;
+  border-color: #00C851;
+}
+/* line 66, ../scss/mixins/_buttons.scss */
+.btn-outline-success:focus, .btn-outline-success.focus {
+  box-shadow: 0 0 0 3px rgba(0, 200, 81, 0.5);
+}
+/* line 71, ../scss/mixins/_buttons.scss */
+.btn-outline-success.disabled, .btn-outline-success:disabled {
+  color: #00C851;
+  background-color: transparent;
+}
+/* line 77, ../scss/mixins/_buttons.scss */
+.btn-outline-success:not([disabled]):not(.disabled):active, .btn-outline-success:not([disabled]):not(.disabled).active, .show > .btn-outline-success.dropdown-toggle {
+  color: #fff;
+  background-color: #00C851;
+  border-color: #00C851;
+  box-shadow: 0 0 0 0 rgba(0, 200, 81, 0.5);
+}
+
+/* line 60, ../scss/components/_buttons.scss */
+.btn-outline-info {
+  color: #fff;
+  background-color: transparent;
+  background-image: none;
+  border-color: #33b5e5;
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-outline-info:hover {
+  color: #fff;
+  background-color: #33b5e5;
+  border-color: #33b5e5;
+}
+/* line 66, ../scss/mixins/_buttons.scss */
+.btn-outline-info:focus, .btn-outline-info.focus {
+  box-shadow: 0 0 0 3px rgba(51, 181, 229, 0.5);
+}
+/* line 71, ../scss/mixins/_buttons.scss */
+.btn-outline-info.disabled, .btn-outline-info:disabled {
+  color: #33b5e5;
+  background-color: transparent;
+}
+/* line 77, ../scss/mixins/_buttons.scss */
+.btn-outline-info:not([disabled]):not(.disabled):active, .btn-outline-info:not([disabled]):not(.disabled).active, .show > .btn-outline-info.dropdown-toggle {
+  color: #fff;
+  background-color: #33b5e5;
+  border-color: #33b5e5;
+  box-shadow: 0 0 0 0 rgba(51, 181, 229, 0.5);
+}
+
+/* line 60, ../scss/components/_buttons.scss */
+.btn-outline-warning {
+  color: #fff;
+  background-color: transparent;
+  background-image: none;
+  border-color: #ffbb33;
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-outline-warning:hover {
+  color: #fff;
+  background-color: #ffbb33;
+  border-color: #ffbb33;
+}
+/* line 66, ../scss/mixins/_buttons.scss */
+.btn-outline-warning:focus, .btn-outline-warning.focus {
+  box-shadow: 0 0 0 3px rgba(255, 187, 51, 0.5);
+}
+/* line 71, ../scss/mixins/_buttons.scss */
+.btn-outline-warning.disabled, .btn-outline-warning:disabled {
+  color: #ffbb33;
+  background-color: transparent;
+}
+/* line 77, ../scss/mixins/_buttons.scss */
+.btn-outline-warning:not([disabled]):not(.disabled):active, .btn-outline-warning:not([disabled]):not(.disabled).active, .show > .btn-outline-warning.dropdown-toggle {
+  color: #fff;
+  background-color: #ffbb33;
+  border-color: #ffbb33;
+  box-shadow: 0 0 0 0 rgba(255, 187, 51, 0.5);
+}
+
+/* line 60, ../scss/components/_buttons.scss */
+.btn-outline-danger {
+  color: #fff;
+  background-color: transparent;
+  background-image: none;
+  border-color: #F60B0E;
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-outline-danger:hover {
+  color: #fff;
+  background-color: #F60B0E;
+  border-color: #F60B0E;
+}
+/* line 66, ../scss/mixins/_buttons.scss */
+.btn-outline-danger:focus, .btn-outline-danger.focus {
+  box-shadow: 0 0 0 3px rgba(246, 11, 14, 0.5);
+}
+/* line 71, ../scss/mixins/_buttons.scss */
+.btn-outline-danger.disabled, .btn-outline-danger:disabled {
+  color: #F60B0E;
+  background-color: transparent;
+}
+/* line 77, ../scss/mixins/_buttons.scss */
+.btn-outline-danger:not([disabled]):not(.disabled):active, .btn-outline-danger:not([disabled]):not(.disabled).active, .show > .btn-outline-danger.dropdown-toggle {
+  color: #fff;
+  background-color: #F60B0E;
+  border-color: #F60B0E;
+  box-shadow: 0 0 0 0 rgba(246, 11, 14, 0.5);
+}
+
+/* line 60, ../scss/components/_buttons.scss */
+.btn-outline-light {
+  color: #fff;
+  background-color: transparent;
+  background-image: none;
+  border-color: #fff;
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-outline-light:hover {
+  color: #fff;
+  background-color: #fff;
+  border-color: #fff;
+}
+/* line 66, ../scss/mixins/_buttons.scss */
+.btn-outline-light:focus, .btn-outline-light.focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+/* line 71, ../scss/mixins/_buttons.scss */
+.btn-outline-light.disabled, .btn-outline-light:disabled {
+  color: #fff;
+  background-color: transparent;
+}
+/* line 77, ../scss/mixins/_buttons.scss */
+.btn-outline-light:not([disabled]):not(.disabled):active, .btn-outline-light:not([disabled]):not(.disabled).active, .show > .btn-outline-light.dropdown-toggle {
+  color: #fff;
+  background-color: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
+}
+
+/* line 60, ../scss/components/_buttons.scss */
+.btn-outline-dark {
+  color: #fff;
+  background-color: transparent;
+  background-image: none;
+  border-color: #1B1B1B;
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-outline-dark:hover {
+  color: #fff;
+  background-color: #1B1B1B;
+  border-color: #1B1B1B;
+}
+/* line 66, ../scss/mixins/_buttons.scss */
+.btn-outline-dark:focus, .btn-outline-dark.focus {
+  box-shadow: 0 0 0 3px rgba(27, 27, 27, 0.5);
+}
+/* line 71, ../scss/mixins/_buttons.scss */
+.btn-outline-dark.disabled, .btn-outline-dark:disabled {
+  color: #1B1B1B;
+  background-color: transparent;
+}
+/* line 77, ../scss/mixins/_buttons.scss */
+.btn-outline-dark:not([disabled]):not(.disabled):active, .btn-outline-dark:not([disabled]):not(.disabled).active, .show > .btn-outline-dark.dropdown-toggle {
+  color: #fff;
+  background-color: #1B1B1B;
+  border-color: #1B1B1B;
+  box-shadow: 0 0 0 0 rgba(27, 27, 27, 0.5);
+}
+
+/* line 71, ../scss/components/_buttons.scss */
+.btn-link {
+  font-weight: normal;
+  color: #ffffff;
+  background-color: #59382E;
+}
+/* line 76, ../scss/components/_buttons.scss */
+.btn-link, .btn-link:active, .btn-link.active, .btn-link:disabled {
+  background-color: transparent;
+}
+/* line 83, ../scss/components/_buttons.scss */
+.btn-link, .btn-link:focus, .btn-link:active {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: #59382E;
+}
+/* line 13, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-link:hover {
+}
+/* line 17, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-link:hover, .btn-link:focus {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #e03a0a;
+}
+/* line 97, ../scss/components/_buttons.scss */
+.btn-link:disabled {
+  color: #6c757d;
+}
+/* line 17, ../vendor/bootstrap/scss/mixins/_hover.scss */
+.btn-link:disabled:hover, .btn-link:disabled:focus {
+  text-decoration: none;
+}
+
+/* line 106, ../scss/components/_buttons.scss */
+.btn-link--clean {
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  font-size: .75rem;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* line 114, ../scss/components/_buttons.scss */
+.btn-link--dash {
+  position: relative;
+}
+/* line 117, ../scss/components/_buttons.scss */
+.btn-link--dash::before {
+  content: "";
+  display: inline-block;
+  height: 1px;
+  width: 40px;
+  vertical-align: middle;
+  margin-right: 1.5rem;
+  background-color: #F60B0E;
+}
+@media (min-width: 768px) {
+  /* line 117, ../scss/components/_buttons.scss */
+  .btn-link--dash::before {
+    width: 80px;
+  }
+}
+
+/* line 133, ../scss/components/_buttons.scss */
+.btn-link--dash-secondary::before {
+  background-color: #fff;
+}
+
+/* line 143, ../scss/components/_buttons.scss */
+.btn-lg {
+  padding: 1rem 2.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* line 147, ../scss/components/_buttons.scss */
+.btn-sm {
+  padding: 0.35rem 1.25rem;
+  font-size: 0.625rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* line 157, ../scss/components/_buttons.scss */
+.btn-block {
+  display: block;
+  width: 90%;
+}
+
+/* line 163, ../scss/components/_buttons.scss */
+.btn-block + .btn-block {
+  margin-top: 0.5rem;
+}
+
+/* line 171, ../scss/components/_buttons.scss */
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+  width: 100%;
+}
+
+/* line 183, ../scss/components/_buttons.scss */
+.btn i {
+  margin-right: .5em;
+  font-size: 1.2em;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -0.1rem;
+}
+
+/* line 197, ../scss/components/_buttons.scss */
+.btn--icon-cirlce {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 36px;
+}
+/* line 204, ../scss/components/_buttons.scss */
+.btn--icon-cirlce i {
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1rem;
+}
+
+  .Bouton {
+      padding: 20px 20px;
+      margin:10px 0px 0px;
+      text-transform: uppercase;
+      font-weight:500;
+      text-align:center;
+      color: #ffffff;
+      background: #e03a0a;
+      display: inline-block;
+      vertical-align: middle;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      position: relative;
+      -webkit-transition-property: color;
+      transition-property: color;
+      -webkit-transition-duration: 0.5s;
+      transition-duration: 0.5s;
+   }
+
+  .Bouton:before {
+      content: "";
+      position: absolute;
+      z-index: -1; top: 0; left: 0; right: 0; bottom: 0;
+      background: #59382E;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transform-origin: 100% 50%;
+      transform-origin: 100% 50%;
+      -webkit-transition-property: transform;
+      transition-property: transform;
+      -webkit-transition-duration: 0.5s;
+      transition-duration: 0.5s;
+      -webkit-transition-timing-function: ease-out;
+      transition-timing-function: ease-out;
+      box-shadow: 3px 3px 5px 0px rgba(224,58,10,1);
+   }
+
+
+  .Bouton:hover:before {
+    -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+      -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+      transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+      background: #59382E;
+}
+
+.btn-card{
+
+display: block;
+margin: 0 auto;
+width: 60%;
+
+}
+
+/* ROOM*/
+
+  .room__inner{
+  position: relative;
+}
+
+.room__text{
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 10;
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 2s;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.room__text p {
+  color: white;
+  text-align:justify;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+}
+
+.room__inner:hover .room__body{
+  display: none;
+}
+
+.room__inner:hover .room__text{
+  display: block;
+  transition: 10s;
+
+}
+
+/* Header*/
+
+.header__logo--img img {
+    display: inline-block;
+    -webkit-transition: all 400ms cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 400ms cubic-bezier(0.645, 0.045, 0.355, 1);
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* Presentation*/
+
+.container-presentation{position: relative;}
+
+.container-presentation h1{text-align: center;color: #e03a0a;padding-top: 40px;}
+
+ .img-presentation{
+  
+padding-top: 40px;
+padding-left: 5%;
+
+ } 
+
+.img-presentation img{
+      box-shadow: 0px 6px 10px -1px rgba(224,58,10,1);
+   }
+
+
+.texte-presentation{
+
+padding-top: 15%;
+padding-right: 0%;
+padding-left: 5%;
+}
+
+.texte-presentation p{
+  color: #000000;
+  text-align: justify;
+  padding-top: 20px;
+}
+
+.texte-presentation i{
+  color: #e03a0a;
+text-align: center;
+
+}
+
+.section-presentation{background-color: #ffffff;padding-bottom: 40px;}
